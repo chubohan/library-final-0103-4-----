@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} 表單輸入-2 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+
+{% block content %}
+
+<h3 style='font-size: 28pt;'>查詢結果</h3>
+{% for book in books %}
+    <li>{{ book.title }} - {{ book.author }} ({{ book.publishing }})</li>
+    {{message}}
+    {% endfor %}
+    <a href="/">返回搜索</a>
+{% endblock content %}
+

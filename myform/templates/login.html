@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} 登入 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+{% block content %}
+<script>
+    function go_delete(id){
+        //var user_pass = document.getElementById('user_pass').value;
+        //if (user_pass != "") {
+        var usr = 'delpost/' + id;
+        window.location = usr;
+        //}
+    }
+  </script>
+  <h2>登入</h2>
+  
+  
+  <form action="/login/" method="post">
+      {% csrf_token %}
+    <br>
+    <label for='user_id'>帳號：</label>
+    <input id='user_id' type='text' name='user_name'>
+    <br>
+    <label for='user_pass'>密碼：</label>
+    <input id='user_pass' type='password' name='user_password'><br/>
+    <input type='submit' value='登入'>
+    <input type='reset' value='清除重填'>
+    <h3>沒有帳號?</h3><a href="{% url 'register' %}">註冊</a>
+  </form> 
+  {% if message %}
+    {{ message }}
+  {% endif %}
+{% endblock content %}

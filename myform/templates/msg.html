@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %} 登入 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+{% block content %}
+    <h1>{{message}}</h1>
+    <a href="{% url 'login' %}" style="font-size: 28pt;">登入</a>
+{% endblock content %}

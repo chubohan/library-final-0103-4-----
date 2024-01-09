@@ -1,0 +1,102 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}歡迎使用圖書館{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #444;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        
+        .list-group a {
+            text-decoration: none;
+            color: #333;
+        }
+        .list-group a.active {
+            background-color: #444;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+    <nav>
+        <a href="/" style="font-size: 20pt;">HOME</a>
+        <a href="/?menu=qa" style="font-size: 20pt;">Q&A</a>
+        <a href="/?menu=activity" style="font-size: 20pt;">活動</a>
+        <a href="/?menu=rule" style="font-size: 20pt;">使用規則</a>
+        <a href="{% url 'borrow_return' %}" style="font-size: 20pt;">借書</a>
+        <a href="{% url 'return_book' %}" style="font-size: 20pt;">還書</a>
+        <a href="{% url 'register' %}" style="font-size: 20pt;">註冊/登入</a>
+        <a href="{% url 'logout' %}" style="font-size: 20pt;">登出</a>
+        <a href="{% url 'username' %}" style="font-size: 20pt;">你的帳號</a>
+        
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="text-align: center;font-family: 標楷體;">書籍查詢</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/search_books/" method="get">
+                            <div class="form-group">
+                                <label for="keyword">輸入書名：</label>
+                                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="(在這裡輸入書名)">
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="text-align: center;">查詢</button>
+                        </form>
+                    </div>
+                    {% if msg %}
+                    <h1 style="text-align: center;">{{msg}}</h1>
+                    {% endif  %}
+                </div>   
+            </div>
+            <div class="col-sm-9 col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        {% block headmessage %} 
+                            {% endblock %}
+                    </div>
+                    <div class="card-body">
+                        {% block content %}{% endblock %}
+                    <div class="card-footer">{% include 'footer.html'%}</div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

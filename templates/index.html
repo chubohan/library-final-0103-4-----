@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block headmessage %}
+
+<!-- 添加書籍查詢表單 -->
+{% if selected_menu == "home" %}
+    <a style="font-family: FZYaoTi;color: red;font-size: 40pt;">熱門書籍</a>
+    {% elif selected_menu == "qa" %}
+        <h3 style='font-family:標楷體;font-size: 32pt;'>常見問答</a>
+    {% elif selected_menu == "activity" %}
+        <h3 style='font-family:標楷體;font-size: 32pt;'>活動相關事項</a>
+    {% elif selected_menu == "rule" %}
+        <h3 style='font-family:標楷體;font-size: 32pt;'>圖書館須注意哪些事項?</a>
+    {% endif %}
+{% endblock headmessage %}
+{% block content %} <!--顯示區 物件導向去處理-->
+{% if selected_menu == "home" %}
+    {% for post in abc %} <!--迴圈-->
+        <div class='card'> <!--用card顯示-->
+            <div style="background-color:orange;" class='card-header'>
+                <p>
+                    <a style='font-family:微軟正黑體;font-size:23pt;font-weight:bold;float: left;' href='/post/{{post.slug}}/'>{{ post.title }}</a>
+                    <a style="font-size: 18pt; float: right;">作者:{{post.author}}</a>
+                </p> 
+            </div>
+            <div class='card-body' style='background-color:#ffffdd'> 
+                <p>
+                <a style="font-size: 16pt;">{{ post.body | truncatechars:40 }}</a> 
+                </p>
+            </div>
+            <div class='card-footer'  style='background-color:#683D36;'>
+                <p>
+                <a style="color: yellow;font-size: 18pt;">出版日期：{{ post.publishing }}</a>
+                </p>
+            </div>
+        </div>
+        <br> <!--每輸出一次就換行-->
+    {% endfor %}
+    {% elif selected_menu == "qa" %}
+        {% for function1 in abc %}
+        <div class='card'> 
+            <div class='card-body' style='background-color:#ffffdd'> 
+                <p>
+                <a style="font-size: 28pt;">Q:{{ function1.question }}</a>
+                <br>
+                <a style="font-size: 20pt;">A:{{function1.answer}} </a>
+                </p>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    {% elif selected_menu == "activity" %}
+    {% for function2 in abc %}
+    <div class='card'> 
+        <div class='card-header' style="background-color:orange;">
+            <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+                <a href='/function2/{{function2.slug3}}/' style="font-size: 20pt;">{{function2.activity}}</a>
+            </p>
+        </div>
+        <div class='card-body' style='background-color:#ffffdd'> 
+            <p>
+            <a style="font-size: 23pt;">活動對象:{{ function2.activitypeople | truncatechars:40 }}</a> 
+            </p>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+    {% elif selected_menu == "rule" %}
+    {% for function in abc %}
+    <div class='card'> 
+        <div class='card-header' style="background-color:orange;">
+            <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
+                <a href='/function/{{function.slug1}}/' style="font-size: 23pt;">規則{{function.id}}</a>
+            </p>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+    {% endif %}
+    {% endblock %}

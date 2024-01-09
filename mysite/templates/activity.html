@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block headmessage %}
+<h3 style='font-family:標楷體;'>{{act.activity}}</h3>
+<a style='font-family:標楷體; font-size: 20px;' href="/?menu=activity">返回活動</a>
+{% endblock headmessage %}
+{% block content %}
+<p style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">
+    活動對像:{{act.activitypeople | safe}}
+    <br>
+    活動地點:{{act.activityplace | safe}}
+    <br>
+    內容:{{act.activitycontant | safe}}
+    <br>
+    注意事項:{{act.activitynotice | safe}}
+</p>
+{% endblock content %}

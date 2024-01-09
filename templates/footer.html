@@ -1,0 +1,10 @@
+{% block footer %}
+    {% if now %} <!--判斷有沒有now-->
+    <p style='font-family:微軟正黑體;'>現在時刻：{{ now }}</p>
+    {% else %}
+    <p style='font-family:微軟正黑體;'>本文內容取自網路，如有侵權請來信通知下架...
+    <br>
+    網站設計人:1105613蔡耀德，11056028邱柏翰，11056005許智霖
+    </p>
+    {% endif %}
+{% endblock %}

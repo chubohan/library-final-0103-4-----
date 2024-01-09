@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} 登入 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+{% block content %}
+<script>
+    function go_delete(id){
+        //var user_pass = document.getElementById('user_pass').value;
+        //if (user_pass != "") {
+        var usr = 'delpost/' + id;
+        window.location = usr;
+        //}
+    }
+  </script>
+  <h2>你的帳號</h2>
+  <form action="" method="post">
+      {% csrf_token %}
+    <br>
+    <h3>你的名稱:{{username}}</h3>
+    <h3>你的email:{{email}}</h3>
+  </form> 
+{% endblock content %}
