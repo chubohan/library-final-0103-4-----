@@ -28,6 +28,6 @@
     <h3>沒有帳號?</h3><a href="{% url 'register' %}">註冊</a>
   </form> 
   {% if message %}
-    {{ message }}
+    <h3>{{ message }}</h3>
   {% endif %}
 {% endblock content %}

@@ -97,6 +97,7 @@ def borrow(request):
    
 #Borrow get不到值
 @login_required(login_url='/msg/')
+
 def return_book(request):
     posts = Borrow.objects.filter(enabled=True).order_by('-pub_time')[:30]
     abc = Borrow.objects.all()

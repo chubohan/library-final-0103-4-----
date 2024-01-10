@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from mysite import views as site
 from myform import views as mf
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',site.homepage,name='homepage'), #連到view的homepage
